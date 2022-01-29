@@ -1,0 +1,14 @@
+.profile__add-form {
+  height: 50px;
+  width: 282px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 1280px) {
+  .profile__add-form {
+    width: 150px;
+    margin: 0;
+    align-self: center;
+    transform: translateY(-14px);
+  }
+}

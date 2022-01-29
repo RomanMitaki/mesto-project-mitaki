@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Проект "Место"</title>
-    <link rel="stylesheet" href="./pages/index.css" />
-  </head>
-  <body class="root">
-    <!--HEADER-->
 
-    <header class="header">
-      <img
-        src="./images/logo-white.svg"
-        alt="Логотип проекта Место"
-        class="logo logo_place_header"
-      />
-    </header>
-    <!--CONTENT-->
-    <main class="content"></main>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Проект "Место"</title>
+  <link rel="stylesheet" href="./pages/index.css" />
+</head>
 
-    <!--FOOTER-->
-    <footer class="footer"></footer>
-  </body>
+<body class="root">
+  <!--HEADER-->
+
+  <header class="header">
+    <img src="./images/logo-white.svg" alt="Логотип проекта Место" class="logo logo_place_header" />
+  </header>
+  <!--CONTENT-->
+  <main class="content">
+
+    <!--PROFILE-->
+
+    <section class="profile content__profile">
+      <div class="profile__container">
+        <img src="./images/profile-Kusto.jpg" alt="Аватар Жак Ив Кусто" class="profile__avatar">
+        <div class="profile__content">
+          <p class="profile__info profile__info_name">Жак-Ив Кусто</p>
+          <p class="profile__info profile__info_description">Исследователь океана</p>
+          <form class="profile__info profile__info_form" action="">
+            <button class="profile__edit-button"></button>
+          </form>
+        </div>
+      </div>
+      <form class="profile__add-form" action="" >
+        <button class="profile__add-button"></button>
+      </form>
+    </section>
+
+
+  </main>
+
+  <!--FOOTER-->
+  <footer class="footer"></footer>
+</body>
+
 </html>
