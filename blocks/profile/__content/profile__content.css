@@ -12,6 +12,17 @@
   padding-bottom: 36px;
 }
 
+@media screen and (min-width: 620px) {
+  .profile__content {
+    grid-template-columns: 189px 24px;
+    grid-template-rows: 39px 18px;
+    gap: 16px 18px;
+    justify-items: start;
+    align-content: center;
+    padding-left: 30px;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .profile__content {
     grid-template-columns: 294px 24px;
@@ -20,5 +31,6 @@
     justify-items: start;
     align-content: center;
     padding-left: 30px;
+    padding-bottom: 0;
   }
 }

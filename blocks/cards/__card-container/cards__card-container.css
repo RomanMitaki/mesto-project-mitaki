@@ -1,0 +1,24 @@
+.cards__card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(361px, 1fr));
+  gap: 20px 17px;
+  grid-auto-flow: row;
+  grid-auto-rows: minmax(361px, 1fr);
+  max-width: 880px;
+  margin: 0 auto;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+@media screen and (min-width: 620px) {
+  .cards__card-container {
+    max-width: calc(2 * 282px + 17px);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .cards__card-container {
+    max-width: 880px;
+  }
+}

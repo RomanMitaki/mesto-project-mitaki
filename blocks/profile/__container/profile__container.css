@@ -3,7 +3,7 @@
   flex-direction: column;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 620px) {
   .profile__container {
     flex-direction: row;
   }

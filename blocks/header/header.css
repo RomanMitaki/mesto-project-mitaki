@@ -7,9 +7,16 @@
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
 
+@media screen and (min-width: 620px) {
+  .header {
+    max-width: calc(620px - 19px * 2);
+    height: 74px;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .header {
-    width: 100%;
+    max-width: 880px;
     height: 74px;
   }
 }
