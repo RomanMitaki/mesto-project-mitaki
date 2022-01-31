@@ -1,0 +1,24 @@
+.popup__header {
+  font-weight: 900;
+  font-size: 18px;
+  line-height: calc(22 / 18);
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 25px;
+  background-color: #ffffff;
+  color: #000;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+@media screen and (min-width: 1280px) {
+  .popup__header {
+    font-size: 24px;
+    line-height: calc(29 / 24);
+    padding-top: 34px;
+    padding-left: 36px;
+    text-align: left;
+  }
+}

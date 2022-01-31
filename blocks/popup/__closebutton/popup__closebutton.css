@@ -1,0 +1,25 @@
+.popup__closebutton {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../../images/UIKIT-icon-CloseButton.svg);
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: 0;
+  cursor: pointer;
+  transition: opacity 0.4s;
+}
+
+.popup__closebutton:hover {
+  opacity: 0.6;
+}
+
+@media screen and (min-width: 1280px) {
+  .popup__closebutton {
+    width: 32px;
+    height: 32px;
+    transform: translateX(40px);
+  }
+}

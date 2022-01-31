@@ -1,0 +1,19 @@
+.popup__item {
+  height: 26px;
+  width: 238px;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0;
+}
+
+@media screen and (min-width: 1280px) {
+  .popup__item {
+    width: 358px;
+  }
+}
