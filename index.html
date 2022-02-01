@@ -34,13 +34,21 @@
             <p class="profile__info profile__info_description">
               Исследователь океана
             </p>
-            <form class="profile__info profile__info_form" action="">
-              <button class="profile__edit-button"></button>
+            <form class="profile__info profile__info_form" action="#">
+              <button
+                type="button"
+                name="profile-editbutton"
+                class="profile__edit-button"
+              ></button>
             </form>
           </div>
         </div>
-        <form class="profile__add-form" action="">
-          <button class="profile__add-button"></button>
+        <form class="profile__add-form" action="#">
+          <button
+            type="button"
+            name="profile-addbutton"
+            class="profile__add-button"
+          ></button>
         </form>
       </section>
 
@@ -56,8 +64,12 @@
             />
             <div class="card__caption">
               <p class="card__text">Карачаевск</p>
-              <form action="" class="card__form">
-                <input type="text" class="card__like-icon" />
+              <form action="#" class="card__form">
+                <button
+                  type="button"
+                  name="card-likebutton"
+                  class="card__like-icon"
+                ></button>
               </form>
             </div>
           </li>
@@ -69,8 +81,12 @@
             />
             <div class="card__caption">
               <p class="card__text">Гора Эльбрус</p>
-              <form action="" class="card__form">
-                <input type="text" class="card__like-icon" />
+              <form action="#" class="card__form">
+                <button
+                  type="button"
+                  name="card-likebutton"
+                  class="card__like-icon"
+                ></button>
               </form>
             </div>
           </li>
@@ -82,8 +98,12 @@
             />
             <div class="card__caption">
               <p class="card__text">Домбай</p>
-              <form action="" class="card__form">
-                <input type="text" class="card__like-icon" />
+              <form action="#" class="card__form">
+                <button
+                  type="button"
+                  name="card-likebutton"
+                  class="card__like-icon"
+                ></button>
               </form>
             </div>
           </li>
@@ -95,8 +115,12 @@
             />
             <div class="card__caption">
               <p class="card__text">Гора Эльбрус</p>
-              <form action="" class="card__form">
-                <input type="text" class="card__like-icon" />
+              <form action="#" class="card__form">
+                <button
+                  type="button"
+                  name="card-likebutton"
+                  class="card__like-icon"
+                ></button>
               </form>
             </div>
           </li>
@@ -108,8 +132,12 @@
             />
             <div class="card__caption">
               <p class="card__text">Домбай</p>
-              <form action="" class="card__form">
-                <input type="text" class="card__like-icon" />
+              <form action="#" class="card__form">
+                <button
+                  type="button"
+                  name="card-likebutton"
+                  class="card__like-icon"
+                ></button>
               </form>
             </div>
           </li>
@@ -121,8 +149,12 @@
             />
             <div class="card__caption">
               <p class="card__text">Карачаево-Черкесия</p>
-              <form action="" class="card__form">
-                <input type="text" class="card__like-icon" />
+              <form action="#" class="card__form">
+                <button
+                  type="button"
+                  name="card-likebutton"
+                  class="card__like-icon"
+                ></button>
               </form>
             </div>
           </li>
@@ -138,20 +170,37 @@
 
     <!--POP-UP-->
 
-    <section class="popup popup_opened">
+    <section class="popup">
       <div class="popup__container">
-        <form action="" class="popup__closebutton-form">
-          <button class="popup__closebutton"></button>
+        <form action="#" class="popup__closebutton-form">
+          <button
+            type="button"
+            name="popup-closebutton"
+            class="popup__closebutton"
+          ></button>
         </form>
         <h2 class="popup__header">Редактировать профиль</h2>
-        <form action="" class="popup__edit-form">
+        <form action="#" class="popup__edit-form">
           <fieldset class="popup__input-container">
-            <input type="text" class="popup__item popup__item_name" /><input
+            <input
+              name="name"
+              placeholder="Введите имя"
               type="text"
-              class="popup__item popup__item_description"
+              class="popup__item"
+            /><input
+              name="description"
+              placeholder="Описание"
+              type="text"
+              class="popup__item"
             />
           </fieldset>
-          <button class="popup__submitbutton">Сохранить</button>
+          <button
+            type="submit"
+            name="popup-submitbutton"
+            class="popup__submitbutton"
+          >
+            Сохранить
+          </button>
         </form>
       </div>
     </section>
