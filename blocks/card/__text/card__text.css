@@ -1,6 +1,5 @@
 .card__text {
   display: block;
-  width: calc(282px - (22px + 32px + 21px + 15px));
   color: #000;
   font-weight: 900;
   font-size: 24px;
@@ -9,4 +8,6 @@
   white-space: nowrap;
   overflow: hidden;
   margin: 0;
+  padding: 25px 0 25px 0;
+  max-width: 190px;
 }

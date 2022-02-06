@@ -12,7 +12,7 @@
   padding: 0;
   border: 0;
   margin-left: 32px;
-  transform: translate(-7px, -1px);
+  transform: translateX(-4px);
 }
 
 .card__like-icon:hover {

@@ -1,10 +1,11 @@
 .card__caption {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   max-width: 282px;
-  height: calc(361px - 282px);
   background-color: #ffffff;
   overflow: hidden;
   padding-left: 21px;
   padding-right: 15px;
+  flex-basis: auto;
 }
