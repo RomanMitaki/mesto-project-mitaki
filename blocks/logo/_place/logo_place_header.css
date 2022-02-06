@@ -1,10 +1,12 @@
 .logo_place_header {
   vertical-align: top;
   transform: translateX(27px);
+  padding-bottom: calc(56px - 24.4px);
 }
 
 @media screen and (min-width: 620px) {
   .logo_place_header {
     transform: translateX(0);
+    padding-bottom: calc(74px - 33px);
   }
 }

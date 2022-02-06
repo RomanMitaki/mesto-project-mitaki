@@ -10,10 +10,13 @@
   transition: 0.4s;
   background-color: #fff;
   padding: 0;
+  border: 0;
+  margin-left: 32px;
+  transform: translate(-7px, -1px);
 }
 
 .card__like-icon:hover {
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .card__like-icon:active {

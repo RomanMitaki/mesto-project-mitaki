@@ -1,7 +1,7 @@
 .card__caption {
   display: flex;
   align-items: center;
-  width: 282px;
+  max-width: 282px;
   height: calc(361px - 282px);
   background-color: #ffffff;
   overflow: hidden;

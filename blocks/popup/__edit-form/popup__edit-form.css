@@ -1,5 +1,4 @@
 .popup__edit-form {
-  height: calc(322px - 47px);
   background-color: #ffffff;
   color: #000;
   padding-top: 75px;
@@ -13,7 +12,6 @@
 
 @media screen and (min-width: 1280px) {
   .popup__edit-form {
-    height: calc(330px - 63px);
     padding-top: 46px;
   }
 }

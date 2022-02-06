@@ -1,5 +1,4 @@
 .popup__item {
-  height: 26px;
   width: 238px;
   font-weight: normal;
   font-size: 14px;
@@ -9,9 +8,14 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  padding: 0;
+  padding: 0 0 10px 0;
   display: block;
   font-family: inherit;
+  margin-bottom: 30px;
+}
+
+.popup__item:nth-child(2) {
+  margin-bottom: 0;
 }
 
 .popup__item:focus {

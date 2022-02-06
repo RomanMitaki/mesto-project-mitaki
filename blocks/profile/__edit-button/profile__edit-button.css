@@ -9,10 +9,18 @@
   cursor: pointer;
   transition: opacity 0.4s;
   padding: 0;
+  grid-area: profile__info_form;
+  transform: translate(13px, 3px);
 }
 
 .profile__edit-button:hover {
   opacity: 0.6;
+}
+
+@media screen and (min-width: 620px) {
+  .profile__edit-button {
+    transform: translate(-5px, 2px);
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -20,5 +28,6 @@
     width: 24px;
     height: 24px;
     background-image: url(../../../images/UIKIT-icon-EditButton.svg);
+    transform: translate(0, 5px);
   }
 }

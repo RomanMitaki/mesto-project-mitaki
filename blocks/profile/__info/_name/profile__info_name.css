@@ -8,14 +8,20 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  width: 189px;
+  max-width: 189px;
+}
+
+@media screen and (min-width: 620px) {
+  .profile__info_name {
+    text-align: start;
+    transform: translateX(0);
+  }
 }
 
 @media screen and (min-width: 1280px) {
   .profile__info_name {
     font-size: 42px;
     line-height: calc(48 / 42);
-    transform: translateX(0);
-    width: 294px;
+    max-width: 294px;
   }
 }

@@ -1,7 +1,6 @@
 .card {
   display: block;
-  width: 282px;
-  height: 361px;
+  max-width: 282px;
   border-radius: 3%;
   overflow: hidden;
   margin: 0 auto;

@@ -7,14 +7,20 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  width: 189px;
+  max-width: 189px;
+}
+
+@media screen and (min-width: 620px) {
+  .profile__info_description {
+    text-align: start;
+  }
 }
 
 @media screen and (min-width: 1280px) {
   .profile__info_description {
     font-size: 18px;
     line-height: calc(22 / 18);
-    transform: translate(-46px, 0);
-    width: 294px;
+    transform: translate(0, 0);
+    max-width: 294px;
   }
 }
