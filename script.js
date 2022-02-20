@@ -136,6 +136,8 @@ const profileAddButton = document.querySelector(
 
 function appearanceCreateCardFormPopup() {
   popup.nextSibling.classList.toggle("popup_opened");
+  addFormInputName.value = '';
+  addFormInputDescription.value = '';
 }
 
 profileAddButton.addEventListener("click", appearanceCreateCardFormPopup);
