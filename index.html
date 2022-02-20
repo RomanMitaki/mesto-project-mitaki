@@ -105,8 +105,8 @@
       <h2 class="popup__header">Редактировать профиль</h2>
       <form action="#" class="popup__edit-form" name="popup-editform">
         <fieldset class="popup__input-container">
-          <input name="name" placeholder="Введите имя" type="text" class="popup__item" /><input name="description"
-            placeholder="Описание" type="text" class="popup__item" />
+          <input name="name" placeholder="Название" type="text" class="popup__item" /><input name="description"
+            placeholder="Ссылка на картинку" type="text" class="popup__item" />
         </fieldset>
         <button type="submit" name="popup-submitbutton" class="popup__submit-button">
           Сохранить
@@ -114,6 +114,33 @@
       </form>
     </div>
   </section>
+
+  <template id="card-template">
+    <li class="card">
+      <button type="button" name="card-trashbutton" class="card__trash-icon"></button>
+      <img src="" alt="" class="card__picture" />
+      <div class="card__caption">
+        <h2 class="card__text"></h2>
+        <button type="button" name="card-likebutton" class="card__like-icon"></button>
+      </div>
+    </li>
+  </template>
+
+  <template id="popup">
+    <section class="popup">
+      <div class="popup__container">
+        <button type="button" name="popup-closebutton" class="popup__close-button"></button>
+        <h2 class="popup__header"></h2>
+        <form action="#" class="popup__edit-form" name="popup-editform">
+          <fieldset class="popup__input-container">
+            <input name="name" placeholder="Название" type="text" class="popup__item" /><input name="description"
+              placeholder="Ссылка на картинку" type="text" class="popup__item" />
+          </fieldset>
+          <button type="submit" name="popup-submitbutton" class="popup__submit-button"></button>
+        </form>
+      </div>
+    </section>
+  </template>
   <script src="./script.js"></script>
 </body>
 
