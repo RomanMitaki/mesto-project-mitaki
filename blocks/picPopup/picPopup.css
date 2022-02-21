@@ -1,0 +1,15 @@
+.picPopup {
+  min-height: 100vh;
+  min-width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 400ms;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  z-index: 9999;
+}

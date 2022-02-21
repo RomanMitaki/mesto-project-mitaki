@@ -1,147 +1,330 @@
 <!DOCTYPE html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Проект "Место"</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Проект "Место"</title>
-  <link rel="stylesheet" href="./pages/index.css" />
-</head>
+  <body class="root">
+    <!--HEADER-->
 
-<body class="root">
-  <!--HEADER-->
+    <header class="header">
+      <img
+        src="./images/logo-white.svg"
+        alt="Логотип проекта Место"
+        class="logo logo_place_header"
+      />
+    </header>
+    <!--CONTENT-->
+    <main class="content">
+      <!--PROFILE-->
 
-  <header class="header">
-    <img src="./images/logo-white.svg" alt="Логотип проекта Место" class="logo logo_place_header" />
-  </header>
-  <!--CONTENT-->
-  <main class="content">
-    <!--PROFILE-->
-
-    <section class="profile content__profile">
-      <div class="profile__container">
-        <img src="./images/profile-Kusto.jpg" alt="Аватар Жак Ив Кусто" class="profile__avatar" />
-        <div class="profile__content">
-          <h1 class="profile__info profile__info_name">Жак-Ив Кусто</h1>
-          <p class="profile__info profile__info_description">Исследователь океана</p>
-          <button type="button" name="profile-editbutton" class="profile__edit-button"></button>
+      <section class="profile content__profile">
+        <div class="profile__container">
+          <img
+            src="./images/profile-Kusto.jpg"
+            alt="Аватар Жак Ив Кусто"
+            class="profile__avatar"
+          />
+          <div class="profile__content">
+            <h1 class="profile__info profile__info_name">Жак-Ив Кусто</h1>
+            <p class="profile__info profile__info_description">
+              Исследователь океана
+            </p>
+            <button
+              type="button"
+              name="profile-editbutton"
+              class="profile__edit-button"
+            ></button>
+          </div>
         </div>
-      </div>
-      <button type="button" name="profile-addbutton" class="profile__add-button"></button>
-    </section>
+        <button
+          type="button"
+          name="profile-addbutton"
+          class="profile__add-button"
+        ></button>
+      </section>
 
-    <!--CARDS-->
+      <!--CARDS-->
 
-    <section class="cards">
-      <ul class="cards__card-container">
-        <li class="card">
-          <button type="button" name="card-trashbutton" class="card__trash-icon"></button>
-          <img src="./images/element-kirill-pershin-Karachaevo-Cherkesiya.png"
-            alt="Старинная каменная постройка у подножия горы" class="card__picture" />
-          <div class="card__caption">
-            <h2 class="card__text">Карачаевск</h2>
-            <button type="button" name="card-likebutton" class="card__like-icon"></button>
-          </div>
-        </li>
-        <li class="card">
-          <button type="button" name="card-trashbutton" class="card__trash-icon"></button>
-          <img src="./images/element-kirill-pershin-Elbrus.png" alt="Панорама: гора Эльбрус на горизонте"
-            class="card__picture" />
-          <div class="card__caption">
-            <h2 class="card__text">Гора Эльбрус</h2>
-            <button type="button" name="card-likebutton" class="card__like-icon"></button>
-          </div>
-        </li>
-        <li class="card">
-          <button type="button" name="card-trashbutton" class="card__trash-icon"></button>
-          <img src="./images/element-kirill-pershin.png" alt="Домбай, фотография горы" class="card__picture" />
-          <div class="card__caption">
-            <h2 class="card__text">Домбай</h2>
-            <button type="button" name="card-likebutton" class="card__like-icon"></button>
-          </div>
-        </li>
-        <li class="card">
-          <button type="button" name="card-trashbutton" class="card__trash-icon"></button>
-          <img src="./images/element-kirill-pershin-Elbrus.png" alt="Панорама: гора Эльбрус на горизонте"
-            class="card__picture" />
-          <div class="card__caption">
-            <h2 class="card__text">Гора Эльбрус</h2>
-            <button type="button" name="card-likebutton" class="card__like-icon"></button>
-          </div>
-        </li>
-        <li class="card">
-          <button type="button" name="card-trashbutton" class="card__trash-icon"></button>
-          <img src="./images/element-kirill-pershin.png" alt="Домбай, фотография горы" class="card__picture" />
-          <div class="card__caption">
-            <h2 class="card__text">Домбай</h2>
-            <button type="button" name="card-likebutton" class="card__like-icon"></button>
-          </div>
-        </li>
-        <li class="card">
-          <button type="button" name="card-trashbutton" class="card__trash-icon"></button>
-          <img src="./images/element-kirill-pershin-Karachaevo-Cherkesiya.png"
-            alt="Старинная каменная постройка у подножия горы" class="card__picture" />
-          <div class="card__caption">
-            <h2 class="card__text">Карачаево-Черкесия</h2>
-            <button type="button" name="card-likebutton" class="card__like-icon"></button>
-          </div>
-        </li>
-      </ul>
-    </section>
-  </main>
+      <section class="cards">
+        <ul class="cards__card-container">
+          <li class="card">
+            <button
+              type="button"
+              name="card-trashbutton"
+              class="card__trash-icon"
+            ></button>
+            <button
+              type="button"
+              name="card-picbutton"
+              class="card__pic-button"
+            >
+              <img
+                src="./images/element-kirill-pershin-Karachaevo-Cherkesiya.png"
+                alt="Старинная каменная постройка у подножия горы"
+                class="card__picture"
+              />
+            </button>
+            <div class="card__caption">
+              <h2 class="card__text">Карачаевск</h2>
+              <button
+                type="button"
+                name="card-likebutton"
+                class="card__like-icon"
+              ></button>
+            </div>
+          </li>
+          <li class="card">
+            <button
+              type="button"
+              name="card-trashbutton"
+              class="card__trash-icon"
+            ></button>
+            <button
+              type="button"
+              name="card-picbutton"
+              class="card__pic-button"
+            >
+              <img
+                src="./images/element-kirill-pershin-Elbrus.png"
+                alt="Панорама: гора Эльбрус на горизонте"
+                class="card__picture"
+              />
+            </button>
+            <div class="card__caption">
+              <h2 class="card__text">Гора Эльбрус</h2>
+              <button
+                type="button"
+                name="card-likebutton"
+                class="card__like-icon"
+              ></button>
+            </div>
+          </li>
+          <li class="card">
+            <button
+              type="button"
+              name="card-trashbutton"
+              class="card__trash-icon"
+            ></button>
+            <button
+              type="button"
+              name="card-picbutton"
+              class="card__pic-button"
+            >
+              <img
+                src="./images/element-kirill-pershin.png"
+                alt="Домбай, фотография горы"
+                class="card__picture"
+              />
+            </button>
+            <div class="card__caption">
+              <h2 class="card__text">Домбай</h2>
+              <button
+                type="button"
+                name="card-likebutton"
+                class="card__like-icon"
+              ></button>
+            </div>
+          </li>
+          <li class="card">
+            <button
+              type="button"
+              name="card-trashbutton"
+              class="card__trash-icon"
+            ></button>
+            <button
+              type="button"
+              name="card-picbutton"
+              class="card__pic-button"
+            >
+              <img
+                src="./images/element-kirill-pershin-Elbrus.png"
+                alt="Панорама: гора Эльбрус на горизонте"
+                class="card__picture"
+              />
+            </button>
+            <div class="card__caption">
+              <h2 class="card__text">Гора Эльбрус</h2>
+              <button
+                type="button"
+                name="card-likebutton"
+                class="card__like-icon"
+              ></button>
+            </div>
+          </li>
+          <li class="card">
+            <button
+              type="button"
+              name="card-trashbutton"
+              class="card__trash-icon"
+            ></button>
+            <button
+              type="button"
+              name="card-picbutton"
+              class="card__pic-button"
+            >
+              <img
+                src="./images/element-kirill-pershin.png"
+                alt="Домбай, фотография горы"
+                class="card__picture"
+              />
+            </button>
+            <div class="card__caption">
+              <h2 class="card__text">Домбай</h2>
+              <button
+                type="button"
+                name="card-likebutton"
+                class="card__like-icon"
+              ></button>
+            </div>
+          </li>
+          <li class="card">
+            <button
+              type="button"
+              name="card-trashbutton"
+              class="card__trash-icon"
+            ></button>
+            <button
+              type="button"
+              name="card-picbutton"
+              class="card__pic-button"
+            >
+              <img
+                src="./images/element-kirill-pershin-Karachaevo-Cherkesiya.png"
+                alt="Старинная каменная постройка у подножия горы"
+                class="card__picture"
+              />
+            </button>
+            <div class="card__caption">
+              <h2 class="card__text">Карачаево-Черкесия</h2>
+              <button
+                type="button"
+                name="card-likebutton"
+                class="card__like-icon"
+              ></button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
 
-  <!--FOOTER-->
+    <!--FOOTER-->
 
-  <footer class="footer">
-    <p class="footer__copyright">&copy;&nbsp;2020 Mesto Russia</p>
-  </footer>
+    <footer class="footer">
+      <p class="footer__copyright">&copy;&nbsp;2020 Mesto Russia</p>
+    </footer>
 
-  <!--POP-UP-->
+    <!--POP-UP-->
 
-  <section class="popup">
-    <div class="popup__container">
-      <button type="button" name="popup-closebutton" class="popup__close-button"></button>
-      <h2 class="popup__header">Редактировать профиль</h2>
-      <form action="#" class="popup__edit-form" name="popup-editform">
-        <fieldset class="popup__input-container">
-          <input name="name" placeholder="Название" type="text" class="popup__item" /><input name="description"
-            placeholder="Ссылка на картинку" type="text" class="popup__item" />
-        </fieldset>
-        <button type="submit" name="popup-submitbutton" class="popup__submit-button">
-          Сохранить
-        </button>
-      </form>
-    </div>
-  </section>
-
-  <template id="card-template">
-    <li class="card">
-      <button type="button" name="card-trashbutton" class="card__trash-icon"></button>
-      <img src="" alt="" class="card__picture" />
-      <div class="card__caption">
-        <h2 class="card__text"></h2>
-        <button type="button" name="card-likebutton" class="card__like-icon"></button>
-      </div>
-    </li>
-  </template>
-
-  <template id="popup">
     <section class="popup">
       <div class="popup__container">
-        <button type="button" name="popup-closebutton" class="popup__close-button"></button>
-        <h2 class="popup__header"></h2>
+        <button
+          type="button"
+          name="popup-closebutton"
+          class="popup__close-button"
+        ></button>
+        <h2 class="popup__header">Редактировать профиль</h2>
         <form action="#" class="popup__edit-form" name="popup-editform">
           <fieldset class="popup__input-container">
-            <input name="name" placeholder="Название" type="text" class="popup__item" /><input name="description"
-              placeholder="Ссылка на картинку" type="text" class="popup__item" />
+            <input
+              name="name"
+              placeholder="Название"
+              type="text"
+              class="popup__item"
+            /><input
+              name="description"
+              placeholder="Ссылка на картинку"
+              type="text"
+              class="popup__item"
+            />
           </fieldset>
-          <button type="submit" name="popup-submitbutton" class="popup__submit-button"></button>
+          <button
+            type="submit"
+            name="popup-submitbutton"
+            class="popup__submit-button"
+          >
+            Сохранить
+          </button>
         </form>
       </div>
     </section>
-  </template>
-  <script src="./script.js"></script>
-</body>
 
+    <!--TEMPLATES-->
+
+    <template id="card-template">
+      <li class="card">
+        <button
+          type="button"
+          name="card-trashbutton"
+          class="card__trash-icon"
+        ></button>
+        <button type="button" name="card-picbutton" class="card__pic-button">
+          <img src="#" alt="#" class="card__picture" />
+        </button>
+        <div class="card__caption">
+          <h2 class="card__text"></h2>
+          <button
+            type="button"
+            name="card-likebutton"
+            class="card__like-icon"
+          ></button>
+        </div>
+      </li>
+    </template>
+
+    <template id="popup">
+      <section class="popup">
+        <div class="popup__container">
+          <button
+            type="button"
+            name="popup-closebutton"
+            class="popup__close-button"
+          ></button>
+          <h2 class="popup__header"></h2>
+          <form action="#" class="popup__edit-form" name="popup-editform">
+            <fieldset class="popup__input-container">
+              <input
+                name="name"
+                placeholder="Название"
+                type="text"
+                class="popup__item"
+              /><input
+                name="description"
+                placeholder="Ссылка на картинку"
+                type="text"
+                class="popup__item"
+              />
+            </fieldset>
+            <button
+              type="submit"
+              name="popup-submitbutton"
+              class="popup__submit-button"
+            ></button>
+          </form>
+        </div>
+      </section>
+    </template>
+
+    <template id="picPopup">
+      <section class="picPopup picPopup_opened">
+        <div class="picPopup__container">
+          <button
+            type="button"
+            name="picPopup-closebutton"
+            class="picPopup__close-button"
+          ></button>
+          <figure class="picPopup__image-container">
+            <img class="picPopup__picture" src="#" />
+            <figcaption class="picPopup__caption"></figcaption>
+          </figure>
+        </div>
+      </section>
+    </template>
+
+    <script src="./script.js"></script>
+  </body>
 </html>

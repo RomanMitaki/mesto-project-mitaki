@@ -1,0 +1,28 @@
+.picPopup__close-button {
+  width: 20px;
+  height: 36px;
+  background-image: url(../../../images/UIKIT-icon-CloseButton.svg);
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0;
+  background-repeat: no-repeat;
+  background-position: top;
+  border: 0;
+  cursor: pointer;
+  transition: opacity 0.4s;
+  box-sizing: border-box;
+  align-self: flex-end;
+}
+
+.picPopup__close-button:hover {
+  opacity: 0.6;
+}
+
+@media screen and (min-width: 1280px) {
+  .picPopup__close-button {
+    width: 32px;
+    height: 32px;
+    transform: translate(40px, -8px);
+    background-size: cover;
+    background-position: center;
+  }
+}
