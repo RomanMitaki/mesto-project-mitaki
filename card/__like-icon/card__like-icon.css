@@ -1,0 +1,26 @@
+.card__like-icon {
+  display: block;
+  width: 24px;
+  height: 20px;
+  background-image: url(../../../images/UIKIT-icon-like.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 0;
+  cursor: pointer;
+  transition: 0.4s;
+  background-color: #fff;
+  padding: 0;
+  border: 0;
+  margin-left: 32px;
+  transform: translateX(-4px);
+}
+
+.card__like-icon:hover {
+  opacity: 0.5;
+}
+
+.card__like-icon:active {
+  background-image: url(../../../images/UIKIT-icon-like-active.svg);
+  border: 0;
+  opacity: 1;
+}
