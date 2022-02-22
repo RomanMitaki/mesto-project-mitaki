@@ -4,7 +4,6 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 300ms, opacity 400ms;

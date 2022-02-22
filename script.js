@@ -1,80 +1,49 @@
-const popup = document.querySelector(".popup");
-const popupEditFormCloseButton = popup.querySelector(
-  "div.popup__container .popup__close-button"
+//Создаем функции открытия и закрытия модального окна
+const openModalWindow = (modalWindow) => {
+  modalWindow.classList.add("popup_opened");
+};
+
+const closeModalWindow = (modalWindow) => {
+  modalWindow.classList.remove("popup_opened");
+};
+
+//Открытие и закрытие EDIT FORM
+const popupEditForm = document.querySelector(".popup_type_edit-form");
+const popupEditFormCloseButton = popupEditForm.querySelector(
+  ".popup__close-button"
 );
-const profileEditButton = document.querySelector(
-  "section.profile div.profile__container .profile__edit-button"
-);
+const profileEditButton = document.querySelector(".profile__edit-button");
+const inputName = popupEditForm.querySelector("input[name=name]");
+const inputDescription = popupEditForm.querySelector("input[name=description]");
 
-//------------------------------Открытие/закрытие попапа-----------------------------------------------------------------------------------------
-function appearanceEditFormPopup() {
-  popup.classList.toggle("popup_opened");
-  editFormInputName.value = "";
-  editFormInputDescription.value = "";
-}
+profileEditButton.addEventListener("click", function () {
+  openModalWindow(popupEditForm);
+});
 
-profileEditButton.addEventListener("click", appearanceEditFormPopup);
-popupEditFormCloseButton.addEventListener("click", appearanceEditFormPopup);
-//-----------------------------------------------------------------------------------------------------------------------------------------------
+popupEditFormCloseButton.addEventListener("click", function () {
+  closeModalWindow(popupEditForm);
+  inputName.value = "";
+  inputDescription.value = "";
+});
 
-const editFormPopupInputs = popup.querySelectorAll(
-  "div.popup__container form.popup__edit-form fieldset.popup__input-container .popup__item"
-);
-
-const editFormInputName = editFormPopupInputs[0];
-const editFormInputDescription = editFormPopupInputs[1];
-
-const profileInfoName = document.querySelector(
-  "section.profile div.profile__container div.profile__content .profile__info_name"
-);
-const profileInfoDescription = document.querySelector(
-  "section.profile div.profile__container div.profile__content .profile__info_description"
-);
-
-//---------------------Задаем правило для содержания плейсхолдера---------------------------------------------------------------------------------
-function definePlaceholderName() {
-  editFormInputName.setAttribute("placeholder", profileInfoName.textContent);
-  editFormInputDescription.setAttribute(
-    "placeholder",
-    profileInfoDescription.textContent
-  );
-}
-//-------------------------------------------------------------------------------------------------------------------------------------------------
-definePlaceholderName();
-
-const popupEditForm = popup.querySelector(
-  "div.popup__container .popup__edit-form"
-);
-
-//-----------------------Задаем правило обработки сабмита на попапе--------------------------------------------------------------------------------
+//Обработка сабмита для EDIT FORM
+const editForm = popupEditForm.querySelector(".popup__edit-form");
 function editFormSubmitHandler(evt) {
   evt.preventDefault();
-  if (editFormInputName.value === "" && editFormInputDescription.value !== "") {
-    profileInfoDescription.textContent = editFormInputDescription.value;
-  } else if (
-    editFormInputDescription.value === "" &&
-    editFormInputName.value !== ""
-  ) {
-    profileInfoName.textContent = editFormInputName.value;
-  } else if (
-    editFormInputDescription.value === "" &&
-    editFormInputName.value === ""
-  ) {
-    profileInfoName.textContent = profileInfoName.textContent;
-    profileInfoDescription.textContent = profileInfoDescription.textContent;
-  } else {
-    profileInfoName.textContent = editFormInputName.value;
-    profileInfoDescription.textContent = editFormInputDescription.value;
-  }
-
-  appearanceEditFormPopup();
-  definePlaceholderName();
+  const profileInfoName = document.querySelector(".profile__info_name");
+  const profileInfoDescription = document.querySelector(
+    ".profile__info_description"
+  );
+  profileInfoName.textContent = inputName.value;
+  profileInfoDescription.textContent = inputDescription.value;
+  closeModalWindow(popupEditForm);
+  inputName.value = "";
+  inputDescription.value = "";
 }
 
-popupEditForm.addEventListener("submit", editFormSubmitHandler);
-//-------------------------------------------------------------------------------------------------------------------------------------------------
+editForm.addEventListener("submit", editFormSubmitHandler);
 
-//--------------------------------------Создаем 6 карточек через JS--------------------------------------------------------------------------------
+//Создаем 6 карточек через JS
 
 const initialCards = [
   {
@@ -103,55 +72,62 @@ const initialCards = [
   },
 ];
 
+//Функция создания(клонирования) карточки
 const cardTemplate = document.querySelector("#card-template").content;
-const cardContainer = document.querySelector(
-  "section.cards .cards__card-container"
-);
+const cardContainer = document.querySelector(".cards__card-container");
 
-initialCards.forEach(function (item) {
+const createCard = (source, caption) => {
   const card = cardTemplate.querySelector(".card").cloneNode(true);
-  card.querySelector(".card__picture").src = item.link;
-  card.querySelector(".card__picture").alt = item.name;
-  card.querySelector("div.card__caption .card__text").textContent = item.name;
-  cardContainer.prepend(card);
+  card.querySelector(".card__picture").src = source;
+  card.querySelector(".card__picture").alt = caption;
+  card.querySelector(".card__text").textContent = caption;
+  return card;
+};
+//Функция отрисовки карточки
+
+const renderCard = (source, caption) => {
+  cardContainer.prepend(createCard(source, caption));
+};
+//Отрисовка карточек из массива через JS
+initialCards.forEach(function (item) {
+  renderCard(item.link, item.name);
 });
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-//---------------------------------------------Добавляем форму для создания новой карточки--------------------------------------------------------------------------
-
-const popupTemplate = document.querySelector("#popup").content;
-const addPopup = popupTemplate.querySelector(".popup").cloneNode(true);
-
-addPopup.querySelector("div.popup__container .popup__header").textContent =
-  "Новое место";
-addPopup.querySelector(
-  "div.popup__container .popup__submit-button"
-).textContent = "Создать";
-popup.after(addPopup);
-
-const profileAddButton = document.querySelector(
-  "section.profile .profile__add-button"
+//Открытие и закрытие ADD CARD FORM
+const popupAddForm = document.querySelector(".popup_type_addcard-form");
+const popupAddFormCloseButton = popupAddForm.querySelector(
+  ".popup__close-button"
 );
+const profileAddButton = document.querySelector(".profile__add-button");
+const inputPlace = popupAddForm.querySelector("input[name=place]");
+const inputImageLink = popupAddForm.querySelector("input[name=image-link]");
 
-function appearanceCreateCardFormPopup() {
-  popup.nextSibling.classList.toggle("popup_opened");
-  addFormInputName.value = "";
-  addFormInputDescription.value = "";
+profileAddButton.addEventListener("click", function () {
+  openModalWindow(popupAddForm);
+});
+
+popupAddFormCloseButton.addEventListener("click", function () {
+  closeModalWindow(popupAddForm);
+  inputPlace.value = "";
+  inputImageLink.value = "";
+});
+
+//Создание карточки через ADD CARD FORM
+const addForm = popupAddForm.querySelector(".popup__edit-form");
+function addFormSubmitHandler(evt) {
+  evt.preventDefault();
+  renderCard(inputImageLink.value, inputPlace.value);
+  closeModalWindow(popupAddForm);
+  inputImageLink.value = "";
+  inputPlace.value = "";
 }
 
-profileAddButton.addEventListener("click", appearanceCreateCardFormPopup);
+addForm.addEventListener("submit", addFormSubmitHandler);
 
-const popupCreateCardCloseButton = popup.nextSibling.querySelector(
-  "div.popup__container .popup__close-button"
-);
+/*
 
-popupCreateCardCloseButton.addEventListener(
-  "click",
-  appearanceCreateCardFormPopup
-);
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 //--------------------------------Реализуем функционал по добавлению карточки пользователем-------------------------------------------------------------------------
 
@@ -219,13 +195,6 @@ function addFormSubmitHandler(evt) {
       document.body.prepend(addPicPopup);
     });
 
-  if (addFormInputName.value === "") {
-    card.querySelector("div.card__caption .card__text").textContent =
-      "Описания нет";
-  }
-  if (addFormInputDescription.value === "") {
-    card.querySelector(".card__picture").alt = "Изображение не загрузили";
-  }
   cardContainer.prepend(card);
   addFormInputDescription.value = "";
   addFormInputName.value = "";
@@ -286,6 +255,6 @@ for (let i = 0; i < cardArr.length; i++) {
   }
   const picPopupButton = cardArr[i].querySelector(".card__pic-button");
   picPopupButton.addEventListener("click", picPopup);
-}
+}*/
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------

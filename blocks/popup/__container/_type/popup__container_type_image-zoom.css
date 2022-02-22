@@ -1,0 +1,9 @@
+.popup__container_type_image-zoom {
+  max-width: 75vw;
+}
+
+@media screen and (min-width: 1280px) {
+  .popup__container_type_image-zoom {
+    overflow: visible;
+  }
+}
