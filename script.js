@@ -1,4 +1,36 @@
-//Создаем функции открытия и закрытия модального окна
+//GLOBAL SCOPE
+//..попап
+const popupEditForm = document.querySelector(".popup_type_edit-form");
+//....слушатели и другие константы, связанные с попапом
+const popupEditFormCloseButton = popupEditForm.querySelector(
+  ".popup__close-button"
+);
+const profileEditButton = document.querySelector(".profile__edit-button");
+const inputName = popupEditForm.querySelector("input[name=name]");
+const inputDescription = popupEditForm.querySelector("input[name=description]");
+const editForm = popupEditForm.querySelector(".popup__edit-form");
+
+//....попап
+const popupZoomPic = document.querySelector(".popup_type_image-zoom");
+
+//..попап
+const popupAddForm = document.querySelector(".popup_type_addcard-form");
+//....слушатели и другие константы, связанные с попапом
+const popupAddFormCloseButton = popupAddForm.querySelector(
+  ".popup__close-button"
+);
+const profileAddButton = document.querySelector(".profile__add-button");
+const inputPlace = popupAddForm.querySelector("input[name=place]");
+const inputImageLink = popupAddForm.querySelector("input[name=image-link]");
+const addForm = popupAddForm.querySelector(".popup__edit-form");
+
+//..темплейт карточки и их создание
+const cardTemplate = document.querySelector("#card-template").content;
+const cardContainer = document.querySelector(".cards__card-container");
+//-------------------------------------------------------------------------
+
+//------------------------Универсальные функции----------------------------
+//Создаем функции открытия и закрытия попапов
 const openModalWindow = (modalWindow) => {
   modalWindow.classList.add("popup_opened");
 };
@@ -6,28 +38,20 @@ const openModalWindow = (modalWindow) => {
 const closeModalWindow = (modalWindow) => {
   modalWindow.classList.remove("popup_opened");
 };
+//------------------------EDIT FORM---------------------------------------
 
 //Открытие и закрытие EDIT FORM
-const popupEditForm = document.querySelector(".popup_type_edit-form");
-const popupEditFormCloseButton = popupEditForm.querySelector(
-  ".popup__close-button"
-);
-const profileEditButton = document.querySelector(".profile__edit-button");
-const inputName = popupEditForm.querySelector("input[name=name]");
-const inputDescription = popupEditForm.querySelector("input[name=description]");
-
-profileEditButton.addEventListener("click", function () {
+profileEditButton.addEventListener("click", () => {
   openModalWindow(popupEditForm);
 });
 
-popupEditFormCloseButton.addEventListener("click", function () {
+popupEditFormCloseButton.addEventListener("click", () => {
   closeModalWindow(popupEditForm);
   inputName.value = "";
   inputDescription.value = "";
 });
 
 //Обработка сабмита для EDIT FORM
-const editForm = popupEditForm.querySelector(".popup__edit-form");
 function editFormSubmitHandler(evt) {
   evt.preventDefault();
   const profileInfoName = document.querySelector(".profile__info_name");
@@ -43,8 +67,72 @@ function editFormSubmitHandler(evt) {
 
 editForm.addEventListener("submit", editFormSubmitHandler);
 
-//Создаем 6 карточек через JS
+//----------------------ADD CARD FORM--------------------------------------
 
+//Открытие и закрытие ADD CARD FORM
+profileAddButton.addEventListener("click", () => {
+  openModalWindow(popupAddForm);
+});
+
+popupAddFormCloseButton.addEventListener("click", () => {
+  closeModalWindow(popupAddForm);
+  inputPlace.value = "";
+  inputImageLink.value = "";
+});
+
+//Создание карточки через ADD CARD FORM
+
+function addFormSubmitHandler(evt) {
+  evt.preventDefault();
+  renderCard(inputImageLink.value, inputPlace.value);
+  closeModalWindow(popupAddForm);
+  inputImageLink.value = "";
+  inputPlace.value = "";
+}
+
+addForm.addEventListener("submit", addFormSubmitHandler);
+
+//-------------------------ZOOM POPUP--------------------------------------
+
+//Функция закрытия зума картинки
+popupZoomPic
+  .querySelector(".popup__close-button")
+  .addEventListener("click", () => {
+    closeModalWindow(popupZoomPic);
+  });
+
+//---------------------------CARDS-----------------------------------------
+
+//Функция создания(клонирования) карточки
+const createCard = (source, caption) => {
+  const card = cardTemplate.querySelector(".card").cloneNode(true);
+  card.querySelector(".card__picture").src = source;
+  card.querySelector(".card__picture").alt = caption;
+  card.querySelector(".card__text").textContent = caption;
+  //Слушатель лайка
+  card.querySelector(".card__like-icon").addEventListener("click", (evt) => {
+    evt.target.classList.toggle("card__like-icon_active");
+  });
+  //Слушатель удаления карточки
+  card.querySelector(".card__trash-icon").addEventListener("click", (evt) => {
+    evt.target.closest(".card").remove();
+  });
+  //Слушатель зума картинки
+  card.querySelector(".card__pic-button").addEventListener("click", () => {
+    openModalWindow(popupZoomPic);
+    popupZoomPic.querySelector(".popup__picture").src = source;
+    popupZoomPic.querySelector(".popup__picture").alt = caption;
+    popupZoomPic.querySelector(".popup__caption").textContent = caption;
+  });
+  return card;
+};
+
+//Функция отрисовки карточки
+const renderCard = (source, caption) => {
+  cardContainer.prepend(createCard(source, caption));
+};
+
+//Создаем 6 карточек через JS
 const initialCards = [
   {
     name: "Намибия",
@@ -72,189 +160,7 @@ const initialCards = [
   },
 ];
 
-//Функция создания(клонирования) карточки
-const cardTemplate = document.querySelector("#card-template").content;
-const cardContainer = document.querySelector(".cards__card-container");
-
-const createCard = (source, caption) => {
-  const card = cardTemplate.querySelector(".card").cloneNode(true);
-  card.querySelector(".card__picture").src = source;
-  card.querySelector(".card__picture").alt = caption;
-  card.querySelector(".card__text").textContent = caption;
-  return card;
-};
-//Функция отрисовки карточки
-
-const renderCard = (source, caption) => {
-  cardContainer.prepend(createCard(source, caption));
-};
 //Отрисовка карточек из массива через JS
 initialCards.forEach(function (item) {
   renderCard(item.link, item.name);
 });
-
-//Открытие и закрытие ADD CARD FORM
-const popupAddForm = document.querySelector(".popup_type_addcard-form");
-const popupAddFormCloseButton = popupAddForm.querySelector(
-  ".popup__close-button"
-);
-const profileAddButton = document.querySelector(".profile__add-button");
-const inputPlace = popupAddForm.querySelector("input[name=place]");
-const inputImageLink = popupAddForm.querySelector("input[name=image-link]");
-
-profileAddButton.addEventListener("click", function () {
-  openModalWindow(popupAddForm);
-});
-
-popupAddFormCloseButton.addEventListener("click", function () {
-  closeModalWindow(popupAddForm);
-  inputPlace.value = "";
-  inputImageLink.value = "";
-});
-
-//Создание карточки через ADD CARD FORM
-const addForm = popupAddForm.querySelector(".popup__edit-form");
-function addFormSubmitHandler(evt) {
-  evt.preventDefault();
-  renderCard(inputImageLink.value, inputPlace.value);
-  closeModalWindow(popupAddForm);
-  inputImageLink.value = "";
-  inputPlace.value = "";
-}
-
-addForm.addEventListener("submit", addFormSubmitHandler);
-
-/*
-
-
-
-
-//--------------------------------Реализуем функционал по добавлению карточки пользователем-------------------------------------------------------------------------
-
-const popupAddForm = popup.nextSibling.querySelector(
-  "div.popup__container .popup__edit-form"
-);
-
-const addFormPopupInputs = popup.nextSibling.querySelectorAll(
-  "div.popup__container form.popup__edit-form fieldset.popup__input-container .popup__item"
-);
-
-const addFormInputName = addFormPopupInputs[0];
-const addFormInputDescription = addFormPopupInputs[1];
-
-function addFormSubmitHandler(evt) {
-  evt.preventDefault();
-  //Создаем карточку из темплейта
-  const card = cardTemplate.querySelector(".card").cloneNode(true);
-  card.querySelector(".card__picture").src = addFormInputDescription.value;
-  card.querySelector(".card__picture").alt = addFormInputName.value;
-  card.querySelector("div.card__caption .card__text").textContent =
-    addFormInputName.value;
-  //Реализуем функционал лайка
-  card
-    .querySelector("div.card__caption .card__like-icon")
-    .addEventListener("click", function (evt) {
-      evt.target.classList.toggle("card__like-icon_active");
-    });
-  //Реализуем функционал удаления карточки
-  card
-    .querySelector(".card__trash-icon")
-    .addEventListener("click", function () {
-      card.querySelector(".card__trash-icon").closest(".card").remove();
-    });
-  //Реализуем функционал зума картинки (создание попапа с картинкой из темплейта с заданными значениями + возможность закрытия попапа через удаление)
-  card
-    .querySelector(".card__pic-button")
-    .addEventListener("click", function () {
-      const picPopupTemplate = document.querySelector("#picPopup").content;
-      const addPicPopup = picPopupTemplate
-        .querySelector(".picPopup")
-        .cloneNode(true);
-      const cardImage = card.querySelector(
-        "button.card__pic-button .card__picture"
-      ).src;
-      const cardCaption = card.querySelector(
-        "div.card__caption .card__text"
-      ).textContent;
-      addPicPopup.querySelector(
-        "div.picPopup__container figure.picPopup__image-container .picPopup__picture"
-      ).src = cardImage;
-      addPicPopup.querySelector(
-        "div.picPopup__container figure.picPopup__image-container .picPopup__picture"
-      ).alt = cardCaption;
-
-      addPicPopup.querySelector(
-        "div.picPopup__container figure.picPopup__image-container .picPopup__caption"
-      ).textContent = cardCaption;
-      const picPopupCloseButton = addPicPopup.querySelector(
-        "div.picPopup__container .picPopup__close-button"
-      );
-      picPopupCloseButton.addEventListener("click", function () {
-        picPopupCloseButton.closest(".picPopup").remove();
-      });
-      document.body.prepend(addPicPopup);
-    });
-
-  cardContainer.prepend(card);
-  addFormInputDescription.value = "";
-  addFormInputName.value = "";
-  appearanceCreateCardFormPopup();
-}
-
-popupAddForm.addEventListener("submit", addFormSubmitHandler);
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-//----------------------------------Реализуем функционал лайка карточки, ее удаления и зума (все кроме добавляемых пользователем)-----------------------------------
-
-//Объявляем переменную для работы с коллекцией изначально существующих карточек
-//и проходимся по ней через for
-const cardArr = cardContainer.querySelectorAll(".card");
-for (let i = 0; i < cardArr.length; i++) {
-  //Добавляем функционал для лайка всей коллекции
-  const likeButton = cardArr[i].querySelector(
-    "div.card__caption .card__like-icon"
-  );
-  //Добавляем функционал удаления карточки коллекции
-  const trashButton = cardArr[i].querySelector(".card__trash-icon");
-  likeButton.addEventListener("click", function (evt) {
-    evt.target.classList.toggle("card__like-icon_active");
-  });
-  trashButton.addEventListener("click", function () {
-    trashButton.closest(".card").remove();
-  });
-  //Добавляем функционал зума картинки(создание попапа из темплейта) и ее закрытия(удаления попапа) для всей коллекции
-  function picPopup() {
-    const picPopupTemplate = document.querySelector("#picPopup").content;
-    const addPicPopup = picPopupTemplate
-      .querySelector(".picPopup")
-      .cloneNode(true);
-    const cardImage = cardArr[i].querySelector(
-      "button.card__pic-button .card__picture"
-    ).src;
-    const cardCaption = cardArr[i].querySelector(
-      "div.card__caption .card__text"
-    ).textContent;
-    addPicPopup.querySelector(
-      "div.picPopup__container figure.picPopup__image-container .picPopup__picture"
-    ).src = cardImage;
-    addPicPopup.querySelector(
-      "div.picPopup__container figure.picPopup__image-container .picPopup__picture"
-    ).alt = cardCaption;
-
-    addPicPopup.querySelector(
-      "div.picPopup__container figure.picPopup__image-container .picPopup__caption"
-    ).textContent = cardCaption;
-    const picPopupCloseButton = addPicPopup.querySelector(
-      "div.picPopup__container .picPopup__close-button"
-    );
-    picPopupCloseButton.addEventListener("click", function () {
-      picPopupCloseButton.closest(".picPopup").remove();
-    });
-    document.body.prepend(addPicPopup);
-  }
-  const picPopupButton = cardArr[i].querySelector(".card__pic-button");
-  picPopupButton.addEventListener("click", picPopup);
-}*/
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------
