@@ -84,8 +84,6 @@ function addFormSubmitHandler(evt) {
   evt.preventDefault();
   renderCard(inputImageLink.value, inputPlace.value);
   closeModalWindow(popupAddForm);
-  inputImageLink.value = "";
-  inputPlace.value = "";
 }
 
 //---------------------------CARDS-----------------------------------------
@@ -135,21 +133,18 @@ profileEditButton.addEventListener("click", () => {
 
 popupEditFormCloseButton.addEventListener("click", () => {
   closeModalWindow(popupEditForm);
-  inputName.value = "";
-  inputDescription.value = "";
-});
+  });
 
 popupFormElement.addEventListener("submit", editFormSubmitHandler);
 
 //Открытие и закрытие ADD CARD FORM
 profileAddButton.addEventListener("click", () => {
+  addForm.reset();
   openModalWindow(popupAddForm);
 });
 
 popupAddFormCloseButton.addEventListener("click", () => {
   closeModalWindow(popupAddForm);
-  inputPlace.value = "";
-  inputImageLink.value = "";
 });
 
 addForm.addEventListener("submit", addFormSubmitHandler);
@@ -160,3 +155,4 @@ popupZoomPic
   .addEventListener("click", () => {
     closeModalWindow(popupZoomPic);
   });
+
