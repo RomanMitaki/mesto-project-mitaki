@@ -6,6 +6,7 @@
 * *CSS (flex, grid-layout, responsive design)*
 * _Figma_
 * _PixelPerfect_
+* _JS_
 
 **Что внутри:**
 
