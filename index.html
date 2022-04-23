@@ -52,14 +52,16 @@
       <h2 class="popup__header">Редактировать профиль</h2>
       <form action="#" class="popup__edit-form" name="popup-editform" novalidate>
         <fieldset class="popup__input-container">
-          <input name="name" placeholder="Введите имя" type="text" class="popup__item" id="name-input" /> <span
-            class="popup__edit-form-error name-input-error"></span><input name="description"
-            placeholder="Введите краткое описание" type="text" class="popup__item" id="description-input" /> <span
+          <input name="name" placeholder="Введите имя" type="text" class="popup__item" id="name-input" minlength="2"
+            maxlength="40" required /> <span class="popup__edit-form-error name-input-error"></span><input
+            name="description" placeholder="Введите краткое описание" type="text" class="popup__item"
+            id="description-input" minlength="2" maxlength="200" required /> <span
             class="popup__edit-form-error description-input-error"></span>
+            <button type="submit" name="popup-submitbutton" class="popup__submit-button">
+              Сохранить
+            </button>
         </fieldset>
-        <button type="submit" name="popup-submitbutton" class="popup__submit-button">
-          Сохранить
-        </button>
+
       </form>
     </div>
   </section>
@@ -72,14 +74,16 @@
       <h2 class="popup__header">Новое место</h2>
       <form action="#" class="popup__edit-form" name="popup-editform" novalidate>
         <fieldset class="popup__input-container">
-          <input name="place" placeholder="Название" type="text" class="popup__item" id="place-input" /><span
-            class="popup__edit-form-error place-input-error"></span><input name="image-link"
-            placeholder="Ссылка на картинку" type="text" class="popup__item" id="image-link-input" /> <span
-            class="popup__edit-form-error image-link-input-error"></span>
+          <input name="place" placeholder="Название" type="text" class="popup__item" id="place-input" minlength="2"
+            maxlength="30" required /><span class="popup__edit-form-error place-input-error"></span><input
+            name="image-link" placeholder="Ссылка на картинку" type="url" class="popup__item" id="image-link-input"
+            required />
+          <span class="popup__edit-form-error image-link-input-error"></span>
+          <button type="submit" name="popup-submitbutton" class="popup__submit-button">
+            Создать
+          </button>
         </fieldset>
-        <button type="submit" name="popup-submitbutton" class="popup__submit-button">
-          Создать
-        </button>
+
       </form>
     </div>
   </section>
