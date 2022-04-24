@@ -1,3 +1,5 @@
+import '../pages/index.css';
+
 import { enableValidation, validationObj } from "./validate.js";
 import { initialCards, renderCard, addFormSubmitHandler } from "./card.js";
 import { openModalWindow, closeModalWindow, keyHandler } from "./utils.js";

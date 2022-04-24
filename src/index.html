@@ -6,14 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Проект "Место"</title>
-  <link rel="stylesheet" href="./pages/index.css" />
 </head>
 
 <body class="root">
   <!--HEADER-->
 
   <header class="header">
-    <img src="./images/logo-white.svg" alt="Логотип проекта Место" class="logo logo_place_header" />
+    <img src="<%=require('./images/logo-white.svg')%>" alt="Логотип проекта Место" class="logo logo_place_header" />
   </header>
   <!--CONTENT-->
   <main class="content">
@@ -21,7 +20,7 @@
 
     <section class="profile content__profile">
       <div class="profile__container">
-        <img src="./images/profile-Kusto.jpg" alt="Аватар Жак Ив Кусто" class="profile__avatar" />
+        <img src="<%=require('./images/profile-Kusto.jpg')%>" alt="Аватар Жак Ив Кусто" class="profile__avatar" />
         <div class="profile__content">
           <h1 class="profile__info profile__info_name">Жак-Ив Кусто</h1>
           <p class="profile__info profile__info_description">Исследователь океана</p>
@@ -57,9 +56,9 @@
             name="description" placeholder="Введите краткое описание" type="text" class="popup__item"
             id="description-input" minlength="2" maxlength="200" required /> <span
             class="popup__edit-form-error description-input-error"></span>
-            <button type="submit" name="popup-submitbutton" class="popup__submit-button">
-              Сохранить
-            </button>
+          <button type="submit" name="popup-submitbutton" class="popup__submit-button">
+            Сохранить
+          </button>
         </fieldset>
 
       </form>
@@ -115,7 +114,7 @@
     </li>
   </template>
 
-  <script type="module" src="./src/components/index.js"></script>
+
 </body>
 
 </html>
