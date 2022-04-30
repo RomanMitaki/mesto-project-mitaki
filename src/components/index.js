@@ -46,6 +46,9 @@ profileAddButton.addEventListener("click", () => {
   popupAddForm
     .querySelector(validationObj.submitButtonSelector)
     .classList.add(validationObj.inactiveButtonClass);
+  popupAddForm
+    .querySelector(validationObj.submitButtonSelector)
+    .setAttribute("disabled", "disabled");
   openModalWindow(popupAddForm);
 });
 
