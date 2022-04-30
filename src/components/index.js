@@ -1,10 +1,9 @@
-import '../pages/index.css';
+import "../pages/index.css";
 
 import { enableValidation, validationObj } from "./validate.js";
 import { initialCards, renderCard, addFormSubmitHandler } from "./card.js";
 import { openModalWindow, closeModalWindow, keyHandler } from "./utils.js";
 import {
-  popupZoomPic,
   popupAddForm,
   popupEditForm,
   editFormSubmitHandler,
@@ -17,16 +16,10 @@ import {
 //GLOBAL SCOPE
 const page = document.querySelector(".root");
 
-const popupEditFormCloseButton = popupEditForm.querySelector(
-  ".popup__close-button"
-);
 const profileEditButton = document.querySelector(".profile__edit-button");
 
 const popupFormElement = popupEditForm.querySelector(".popup__edit-form");
 
-const popupAddFormCloseButton = popupAddForm.querySelector(
-  ".popup__close-button"
-);
 const profileAddButton = document.querySelector(".profile__add-button");
 
 const addForm = popupAddForm.querySelector(".popup__edit-form");
@@ -50,6 +43,9 @@ popupFormElement.addEventListener("submit", editFormSubmitHandler);
 //Открытие ADD CARD FORM
 profileAddButton.addEventListener("click", () => {
   addForm.reset();
+  popupAddForm
+    .querySelector(validationObj.submitButtonSelector)
+    .classList.add(validationObj.inactiveButtonClass);
   openModalWindow(popupAddForm);
 });
 
@@ -64,9 +60,6 @@ page.addEventListener("click", (evt) => {
     closeModalWindow(evt.target.closest(".popup"));
   }
 });
-
-//..нажатие esc
-page.addEventListener("keydown", keyHandler);
 
 //валидация
 enableValidation(validationObj);
