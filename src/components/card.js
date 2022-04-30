@@ -32,6 +32,8 @@ const cardTemplate = document.querySelector("#card-template").content;
 const cardContainer = document.querySelector(".cards__card-container");
 const inputImageLink = popupAddForm.querySelector("input[name=image-link]");
 const inputPlace = popupAddForm.querySelector("input[name=place]");
+const imgZoomPic = popupZoomPic.querySelector(".popup__picture");
+const captionZoomPic = popupZoomPic.querySelector(".popup__caption");
 
 //Функция создания(клонирования) карточки
 const createCard = (source, caption) => {
@@ -49,9 +51,9 @@ const createCard = (source, caption) => {
   });
   //Слушатель зума картинки
   card.querySelector(".card__pic-button").addEventListener("click", () => {
-    popupZoomPic.querySelector(".popup__picture").src = source;
-    popupZoomPic.querySelector(".popup__picture").alt = caption;
-    popupZoomPic.querySelector(".popup__caption").textContent = caption;
+    imgZoomPic.src = source;
+    imgZoomPic.alt = caption;
+    captionZoomPic.textContent = caption;
     openModalWindow(popupZoomPic);
   });
   return card;
