@@ -1,7 +1,7 @@
 import "../pages/index.css";
 
 import { enableValidation, validationObj } from "./validate.js";
-import { initialCards, renderCard, addFormSubmitHandler } from "./card.js";
+import { renderCard, addFormSubmitHandler } from "./card.js";
 import { openModalWindow, closeModalWindow, keyHandler } from "./utils.js";
 import {
   popupAddForm,
@@ -11,7 +11,9 @@ import {
   profileInfoDescription,
   inputName,
   inputDescription,
+  profileAvatar,
 } from "./modal.js";
+import { getINitialCards, getUserInfo } from "./api.js";
 
 //GLOBAL SCOPE
 const page = document.querySelector(".root");
@@ -24,11 +26,27 @@ const profileAddButton = document.querySelector(".profile__add-button");
 
 const addForm = popupAddForm.querySelector(".popup__edit-form");
 
-//Отрисовка карточек из массива через JS
-initialCards.forEach(function (item) {
-  renderCard(item.link, item.name);
-});
+//Данные о пользователе
+getUserInfo()
+  .then((res) => {
+    profileAvatar.src = res.avatar;
+    profileInfoDescription.textContent = res.about;
+    profileInfoName.textContent = res.name;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
+//Отрисовка карточек из массива сервера
+getINitialCards()
+  .then((res) => {
+    res.forEach((item) => {
+      renderCard(item.link, item.name, item);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 //------------------Слушатели---------------------
 
 //Открытие EDIT FORM

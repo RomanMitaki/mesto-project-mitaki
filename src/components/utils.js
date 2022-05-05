@@ -1,4 +1,4 @@
-import { popupEditForm, popupAddForm, popupZoomPic } from "./modal.js";
+//import { popupEditForm, popupAddForm, popupZoomPic } from "./modal.js";
 
 export const openModalWindow = (modalWindow) => {
   modalWindow.classList.add("popup_opened");

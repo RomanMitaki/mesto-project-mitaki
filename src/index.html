@@ -20,10 +20,10 @@
 
     <section class="profile content__profile">
       <div class="profile__container">
-        <img src="<%=require('./images/profile-Kusto.jpg')%>" alt="Аватар Жак Ив Кусто" class="profile__avatar" />
+        <img src="#" alt="Ваш аватар" class="profile__avatar" />
         <div class="profile__content">
-          <h1 class="profile__info profile__info_name">Жак-Ив Кусто</h1>
-          <p class="profile__info profile__info_description">Исследователь океана</p>
+          <h1 class="profile__info profile__info_name"></h1>
+          <p class="profile__info profile__info_description"></p>
           <button type="button" name="profile-editbutton" class="profile__edit-button"></button>
         </div>
       </div>
@@ -109,7 +109,11 @@
       </button>
       <div class="card__caption">
         <h2 class="card__text"></h2>
-        <button type="button" name="card-likebutton" class="card__like-icon"></button>
+        <div class="card__like-container">
+          <button type="button" name="card-likebutton" class="card__like-icon"></button>
+          <p class="card__like-counter"></p>
+        </div>
+
       </div>
     </li>
   </template>

@@ -1,32 +1,6 @@
 import { popupZoomPic, popupAddForm } from "./modal.js";
 import { openModalWindow, closeModalWindow } from "./utils.js";
-
-export const initialCards = [
-  {
-    name: "Намибия",
-    link: "https://images.unsplash.com/photo-1644235279538-4cc7cbdca6a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2148&q=80",
-  },
-  {
-    name: "Монте Бальдо",
-    link: "https://images.unsplash.com/photo-1643661100639-de5cdf7bcb80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
-  },
-  {
-    name: "Леба",
-    link: "https://images.unsplash.com/photo-1640885939120-2d66e488f9aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
-  },
-  {
-    name: "Эстес парк",
-    link: "https://images.unsplash.com/photo-1643326522611-419b6aac7141?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
-  },
-  {
-    name: "Гималаи",
-    link: "https://images.unsplash.com/photo-1548319558-d4987a6a217c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
-  },
-  {
-    name: "Флом",
-    link: "https://images.unsplash.com/photo-1643193371987-42bac7f9a267?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
-  },
-];
+import { addCard } from "./api.js";
 
 const cardTemplate = document.querySelector("#card-template").content;
 const cardContainer = document.querySelector(".cards__card-container");
@@ -36,11 +10,12 @@ const imgZoomPic = popupZoomPic.querySelector(".popup__picture");
 const captionZoomPic = popupZoomPic.querySelector(".popup__caption");
 
 //Функция создания(клонирования) карточки
-const createCard = (source, caption) => {
+const createCard = (source, caption, res) => {
   const card = cardTemplate.querySelector(".card").cloneNode(true);
   card.querySelector(".card__picture").src = source;
   card.querySelector(".card__picture").alt = caption;
   card.querySelector(".card__text").textContent = caption;
+  card.querySelector('.card__like-counter').textContent = res.likes.length;
   //Слушатель лайка
   card.querySelector(".card__like-icon").addEventListener("click", (evt) => {
     evt.target.classList.toggle("card__like-icon_active");
@@ -60,13 +35,23 @@ const createCard = (source, caption) => {
 };
 
 //Функция отрисовки карточки
-export const renderCard = (source, caption) => {
-  cardContainer.prepend(createCard(source, caption));
+export const renderCard = (source, caption, res) => {
+  cardContainer.prepend(createCard(source, caption, res));
 };
 
 //Создание карточки через ADD CARD FORM
 export function addFormSubmitHandler(evt) {
   evt.preventDefault();
-  renderCard(inputImageLink.value, inputPlace.value);
-  closeModalWindow(popupAddForm);
+  const newCardInfo = {
+    link: inputImageLink.value,
+    caption: inputPlace.value,
+  };
+  addCard(newCardInfo)
+    .then((res) => {
+      renderCard(res.link, res.name);
+      closeModalWindow(popupAddForm);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }

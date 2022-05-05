@@ -33,6 +33,8 @@
 @import url(../blocks/card/__text/card__text.css);
 @import url(../blocks/card/__like-icon/card__like-icon.css);
 @import url(../blocks/card/__like-icon/_active/card__like-icon_active.css);
+@import url(../blocks/card/__like-container/card__like-container.css);
+@import url(../blocks/card/__like-counter/card__like-counter.css);
 
 /* FOOTER */
 
@@ -63,6 +65,7 @@
 @import url(../blocks/popup/__image-container/popup__image-container.css);
 @import url(../blocks/popup/__picture/popup__picture.css);
 @import url(../blocks/popup/__caption/popup__caption.css);
+
 
 
 
