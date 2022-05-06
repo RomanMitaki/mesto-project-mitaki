@@ -20,6 +20,7 @@
 @import url(../blocks/profile/__info/_description/profile__info_description.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
+@import url(../blocks/profile/__avatar-edit/profile__avatar-edit.css);
 
 /* CARDS */
 
@@ -27,6 +28,7 @@
 @import url(../blocks/cards/__card-container/cards__card-container.css);
 @import url(../blocks/card/card.css);
 @import url(../blocks/card/__trash-icon/card__trash-icon.css);
+@import url(../blocks/card/__trash-icon/_hidden/card__trash-icon_hidden.css);
 @import url(../blocks/card/__pic-button/card__pic-button.css);
 @import url(../blocks/card/__picture/card__picture.css);
 @import url(../blocks/card/__caption/card__caption.css);

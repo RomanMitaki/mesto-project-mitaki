@@ -2,7 +2,7 @@ import "../pages/index.css";
 
 import { enableValidation, validationObj } from "./validate.js";
 import { renderCard, addFormSubmitHandler } from "./card.js";
-import { openModalWindow, closeModalWindow, keyHandler } from "./utils.js";
+import { openModalWindow, closeModalWindow } from "./utils.js";
 import {
   popupAddForm,
   popupEditForm,
@@ -38,15 +38,32 @@ getUserInfo()
   });
 
 //Отрисовка карточек из массива сервера
-getINitialCards()
+getUserInfo()
   .then((res) => {
-    res.forEach((item) => {
-      renderCard(item.link, item.name, item);
+    const userId = res._id;
+    getINitialCards().then((res) => {
+      res.forEach((item) => {
+        renderCard(item.link, item.name, item);
+        if (!(item.owner._id === userId)) {
+          document
+            .querySelector(".card__trash-icon")
+            .classList.add("card__trash-icon_hidden");
+        }
+        let like = item.likes.some((likesObj) => {
+          return likesObj._id === userId;
+        });
+        if (like === true) {
+          document
+            .querySelector(".card__like-icon")
+            .classList.add("card__like-icon_active");
+        }
+      });
     });
   })
   .catch((err) => {
     console.log(err);
   });
+
 //------------------Слушатели---------------------
 
 //Открытие EDIT FORM
