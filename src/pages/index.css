@@ -20,6 +20,7 @@
 @import url(../blocks/profile/__info/_description/profile__info_description.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
+@import url(../blocks/profile/__avatar-edit/profile__avatar-edit.css);
 
 /* CARDS */
 
@@ -27,12 +28,15 @@
 @import url(../blocks/cards/__card-container/cards__card-container.css);
 @import url(../blocks/card/card.css);
 @import url(../blocks/card/__trash-icon/card__trash-icon.css);
+@import url(../blocks/card/__trash-icon/_hidden/card__trash-icon_hidden.css);
 @import url(../blocks/card/__pic-button/card__pic-button.css);
 @import url(../blocks/card/__picture/card__picture.css);
 @import url(../blocks/card/__caption/card__caption.css);
 @import url(../blocks/card/__text/card__text.css);
 @import url(../blocks/card/__like-icon/card__like-icon.css);
 @import url(../blocks/card/__like-icon/_active/card__like-icon_active.css);
+@import url(../blocks/card/__like-container/card__like-container.css);
+@import url(../blocks/card/__like-counter/card__like-counter.css);
 
 /* FOOTER */
 
@@ -63,6 +67,10 @@
 @import url(../blocks/popup/__image-container/popup__image-container.css);
 @import url(../blocks/popup/__picture/popup__picture.css);
 @import url(../blocks/popup/__caption/popup__caption.css);
+@import url(../blocks/popup/_type/popup_type_edit-avatar.css);
+@import url(../blocks/popup/__container/_type/popup__container_type_edit-avatar-form.css);
+@import url(../blocks/popup/__submit-button/_place/popup__submit-button_place_editAvatarForm.css);
+
 
 
 

@@ -1,7 +1,7 @@
 .card__like-icon {
   display: block;
-  width: 24px;
-  height: 20px;
+  width: 22px;
+  height: 19px;
   background-image: url(../../../images/UIKIT-icon-like.svg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -12,6 +12,7 @@
   padding: 0;
   border: 0;
   margin-left: 32px;
+  margin-top: 3px;
   transform: translateX(-4px);
 }
 

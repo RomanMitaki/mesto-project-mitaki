@@ -20,10 +20,11 @@
 
     <section class="profile content__profile">
       <div class="profile__container">
-        <img src="<%=require('./images/profile-Kusto.jpg')%>" alt="Аватар Жак Ив Кусто" class="profile__avatar" />
+        <button type="button" name="profile-avatarbutton" class="profile__avatar-edit"><img src="#" alt="Ваш аватар"
+            class="profile__avatar" /></button>
         <div class="profile__content">
-          <h1 class="profile__info profile__info_name">Жак-Ив Кусто</h1>
-          <p class="profile__info profile__info_description">Исследователь океана</p>
+          <h1 class="profile__info profile__info_name"></h1>
+          <p class="profile__info profile__info_description"></p>
           <button type="button" name="profile-editbutton" class="profile__edit-button"></button>
         </div>
       </div>
@@ -99,6 +100,27 @@
     </div>
   </section>
 
+  <!--POP-UP EDIT AVATAR-->
+
+  <section class="popup popup_type_edit-avatar">
+    <div class="popup__container popup__container_type_edit-avatar-form">
+      <button type="button" name="popup-closebutton" class="popup__close-button"></button>
+      <h2 class="popup__header">Обновить аватар</h2>
+      <form action="#" class="popup__edit-form" name="popup-editAvatarForm" novalidate>
+        <fieldset class="popup__input-container">
+          <input name="avatar-link" placeholder="Ссылка на аватар" type="url" class="popup__item" id="avatar-link-input"
+            required />
+          <span class="popup__edit-form-error avatar-link-input-error"></span>
+          <button type="submit" name="popup-submitbutton"
+            class="popup__submit-button popup__submit-button_place_editAvatarForm">
+            Сохранить
+          </button>
+        </fieldset>
+
+      </form>
+    </div>
+  </section>
+
   <!--TEMPLATES-->
 
   <template id="card-template" class="card-template">
@@ -109,7 +131,11 @@
       </button>
       <div class="card__caption">
         <h2 class="card__text"></h2>
-        <button type="button" name="card-likebutton" class="card__like-icon"></button>
+        <div class="card__like-container">
+          <button type="button" name="card-likebutton" class="card__like-icon"></button>
+          <p class="card__like-counter"></p>
+        </div>
+
       </div>
     </li>
   </template>
