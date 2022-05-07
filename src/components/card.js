@@ -1,5 +1,5 @@
 import { popupZoomPic, popupAddForm } from "./modal.js";
-import { openModalWindow, closeModalWindow } from "./utils.js";
+import { openModalWindow, closeModalWindow, renderLoading } from "./utils.js";
 import { addCard, deleteCard, addLike, removeLike } from "./api.js";
 
 const cardTemplate = document.querySelector("#card-template").content;
@@ -55,6 +55,11 @@ export const renderCard = (source, caption, res) => {
 //Создание карточки через ADD CARD FORM
 export function addFormSubmitHandler(evt) {
   evt.preventDefault();
+  renderLoading(
+    true,
+    popupAddForm.querySelector(".popup__submit-button"),
+    "Создать"
+  );
   const newCardInfo = {
     link: inputImageLink.value,
     caption: inputPlace.value,
@@ -66,5 +71,12 @@ export function addFormSubmitHandler(evt) {
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      renderLoading(
+        false,
+        popupAddForm.querySelector(".popup__submit-button"),
+        "Создать"
+      );
     });
 }

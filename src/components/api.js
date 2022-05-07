@@ -6,8 +6,6 @@ const config = {
   },
 };
 
-
-
 export const getINitialCards = () => {
   return fetch(`${config.baseUrl}/cards`, {
     headers: config.headers,
@@ -37,6 +35,21 @@ export const editUserInfo = (userData) => {
     body: JSON.stringify({
       name: userData.name,
       about: userData.description,
+    }),
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  });
+};
+
+export const editUserAvatar = (avatarLink) => {
+  return fetch(`${config.baseUrl}/users/me/avatar`, {
+    method: "PATCH",
+    headers: config.headers,
+    body: JSON.stringify({
+      avatar: avatarLink,
     }),
   }).then((res) => {
     if (res.ok) {
@@ -96,5 +109,3 @@ export const removeLike = (cardId) => {
     return Promise.reject(`Ошибка: ${res.status}`);
   });
 };
-
-

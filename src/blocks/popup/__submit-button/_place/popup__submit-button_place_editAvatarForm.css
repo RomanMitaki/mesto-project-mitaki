@@ -1,0 +1,5 @@
+@media screen and (min-width: 1280px) {
+  .popup__submit-button_place_editAvatarForm {
+    margin-top: 14px;
+  }
+}

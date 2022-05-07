@@ -5,8 +5,10 @@ import { renderCard, addFormSubmitHandler } from "./card.js";
 import { openModalWindow, closeModalWindow } from "./utils.js";
 import {
   popupAddForm,
+  popupAvatarForm,
   popupEditForm,
   editFormSubmitHandler,
+  editAvatarFormSubmitHandler,
   profileInfoName,
   profileInfoDescription,
   inputName,
@@ -17,14 +19,12 @@ import { getINitialCards, getUserInfo } from "./api.js";
 
 //GLOBAL SCOPE
 const page = document.querySelector(".root");
-
 const profileEditButton = document.querySelector(".profile__edit-button");
-
 const popupFormElement = popupEditForm.querySelector(".popup__edit-form");
-
 const profileAddButton = document.querySelector(".profile__add-button");
-
+const profileAvatarButton = document.querySelector(".profile__avatar-edit");
 const addForm = popupAddForm.querySelector(".popup__edit-form");
+const editAvatarForm = popupAvatarForm.querySelector(".popup__edit-form");
 
 //Данные о пользователе
 getUserInfo()
@@ -88,6 +88,20 @@ profileAddButton.addEventListener("click", () => {
 });
 
 addForm.addEventListener("submit", addFormSubmitHandler);
+
+//Открытие POPUP EDIT AVATAR
+profileAvatarButton.addEventListener("click", () => {
+  editAvatarForm.reset();
+  popupAvatarForm
+    .querySelector(validationObj.submitButtonSelector)
+    .classList.add(validationObj.inactiveButtonClass);
+  popupAvatarForm
+    .querySelector(validationObj.submitButtonSelector)
+    .setAttribute("disabled", "disabled");
+  openModalWindow(popupAvatarForm);
+});
+
+editAvatarForm.addEventListener("submit", editAvatarFormSubmitHandler);
 
 //Закрытие всех попапов
 page.addEventListener("click", (evt) => {

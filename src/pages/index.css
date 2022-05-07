@@ -67,6 +67,9 @@
 @import url(../blocks/popup/__image-container/popup__image-container.css);
 @import url(../blocks/popup/__picture/popup__picture.css);
 @import url(../blocks/popup/__caption/popup__caption.css);
+@import url(../blocks/popup/_type/popup_type_edit-avatar.css);
+@import url(../blocks/popup/__container/_type/popup__container_type_edit-avatar-form.css);
+@import url(../blocks/popup/__submit-button/_place/popup__submit-button_place_editAvatarForm.css);
 
 
 
