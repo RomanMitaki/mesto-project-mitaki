@@ -1,5 +1,5 @@
 import { openModalWindow } from "./modal.js";
-import { deleteCard, addLike, removeLike, getUserInfo } from "./api.js";
+import { deleteCard, addLike, removeLike } from "./api.js";
 
 export const popupZoomPic = document.querySelector(".popup_type_image-zoom");
 const cardTemplate = document.querySelector("#card-template").content;
@@ -19,22 +19,19 @@ const createCard = (source, caption, res, userId) => {
   const cardPicture = card.querySelector(".card__picture");
   const likeCounter = card.querySelector(".card__like-counter");
   const likeIcon = card.querySelector(".card__like-icon");
+  const trashIcon = card.querySelector(".card__trash-icon");
   cardPicture.src = source;
   cardPicture.alt = caption;
   card.querySelector(".card__text").textContent = caption;
   likeCounter.textContent = res.likes.length;
   if (!(res.owner._id === userId)) {
-    card
-      .querySelector(".card__trash-icon")
-      .classList.add("card__trash-icon_hidden");
+    trashIcon.classList.add("card__trash-icon_hidden");
   }
   const like = res.likes.some((likesObj) => {
     return likesObj._id === userId;
   });
   if (like === true) {
-    card
-      .querySelector(".card__like-icon")
-      .classList.add("card__like-icon_active");
+    likeIcon.classList.add("card__like-icon_active");
   }
   //Слушатель лайка
   likeIcon.addEventListener("click", (evt) => {
@@ -57,9 +54,14 @@ const createCard = (source, caption, res, userId) => {
     }
   });
   //Слушатель удаления карточки
-  card.querySelector(".card__trash-icon").addEventListener("click", (evt) => {
-    deleteCard(res._id);
-    evt.target.closest(".card").remove();
+  trashIcon.addEventListener("click", (evt) => {
+    deleteCard(res._id)
+      .then((res) => {
+        trashIcon.closest(".card").remove();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   });
   //Слушатель зума картинки
   card.querySelector(".card__pic-button").addEventListener("click", () => {

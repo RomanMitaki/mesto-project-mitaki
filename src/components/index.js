@@ -135,20 +135,19 @@ function addFormSubmitHandler(evt) {
 //------------------EXECUTION-------------------
 
 //Данные о пользователе с отрисовкой карточек из массива сервера
-Promise.all(userInfoCardsPromiseArr).then((res) => {
-  const userId = res[0]._id;
-  profileAvatar.src = res[0].avatar;
-  profileInfoDescription.textContent = res[0].about;
-  profileInfoName.textContent = res[0].name;
-  res[1]
-    .reverse()
-    .forEach((item) => {
+Promise.all(userInfoCardsPromiseArr)
+  .then((res) => {
+    const userId = res[0]._id;
+    profileAvatar.src = res[0].avatar;
+    profileInfoDescription.textContent = res[0].about;
+    profileInfoName.textContent = res[0].name;
+    res[1].reverse().forEach((item) => {
       renderCard(item.link, item.name, item, userId);
-    })
-    .catch((err) => {
-      console.log(err);
     });
-});
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 //------------------Слушатели---------------------
 
