@@ -1,35 +1,59 @@
-import { popupZoomPic, popupAddForm } from "./modal.js";
-import { openModalWindow, closeModalWindow, renderLoading } from "./utils.js";
-import { addCard, deleteCard, addLike, removeLike } from "./api.js";
+import { openModalWindow } from "./modal.js";
+import { deleteCard, addLike, removeLike, getUserInfo } from "./api.js";
 
+export const popupZoomPic = document.querySelector(".popup_type_image-zoom");
 const cardTemplate = document.querySelector("#card-template").content;
 const cardContainer = document.querySelector(".cards__card-container");
-const inputImageLink = popupAddForm.querySelector("input[name=image-link]");
-const inputPlace = popupAddForm.querySelector("input[name=place]");
 const imgZoomPic = popupZoomPic.querySelector(".popup__picture");
 const captionZoomPic = popupZoomPic.querySelector(".popup__caption");
 
+//Функция постановки или снятия лайка
+function likeCard(res, elCounter, elIcon) {
+  elCounter.textContent = res.likes.length;
+  elIcon.classList.toggle("card__like-icon_active");
+}
+
 //Функция создания(клонирования) карточки
-const createCard = (source, caption, res) => {
+const createCard = (source, caption, res, userId) => {
   const card = cardTemplate.querySelector(".card").cloneNode(true);
-  card.querySelector(".card__picture").src = source;
-  card.querySelector(".card__picture").alt = caption;
+  const cardPicture = card.querySelector(".card__picture");
+  const likeCounter = card.querySelector(".card__like-counter");
+  const likeIcon = card.querySelector(".card__like-icon");
+  cardPicture.src = source;
+  cardPicture.alt = caption;
   card.querySelector(".card__text").textContent = caption;
-  card.querySelector(".card__like-counter").textContent = res.likes.length;
+  likeCounter.textContent = res.likes.length;
+  if (!(res.owner._id === userId)) {
+    card
+      .querySelector(".card__trash-icon")
+      .classList.add("card__trash-icon_hidden");
+  }
+  const like = res.likes.some((likesObj) => {
+    return likesObj._id === userId;
+  });
+  if (like === true) {
+    card
+      .querySelector(".card__like-icon")
+      .classList.add("card__like-icon_active");
+  }
   //Слушатель лайка
-  card.querySelector(".card__like-icon").addEventListener("click", (evt) => {
+  likeIcon.addEventListener("click", (evt) => {
     if (!evt.target.classList.contains("card__like-icon_active")) {
-      addLike(res._id).then((res) => {
-        card.querySelector(".card__like-counter").textContent =
-          res.likes.length;
-      });
-      evt.target.classList.toggle("card__like-icon_active");
+      addLike(res._id)
+        .then((res) => {
+          likeCard(res, likeCounter, likeIcon);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
-      removeLike(res._id).then((res) => {
-        card.querySelector(".card__like-counter").textContent =
-          res.likes.length;
-      });
-      evt.target.classList.toggle("card__like-icon_active");
+      removeLike(res._id)
+        .then((res) => {
+          likeCard(res, likeCounter, likeIcon);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   });
   //Слушатель удаления карточки
@@ -48,35 +72,6 @@ const createCard = (source, caption, res) => {
 };
 
 //Функция отрисовки карточки
-export const renderCard = (source, caption, res) => {
-  cardContainer.prepend(createCard(source, caption, res));
+export const renderCard = (source, caption, res, userId) => {
+  cardContainer.prepend(createCard(source, caption, res, userId));
 };
-
-//Создание карточки через ADD CARD FORM
-export function addFormSubmitHandler(evt) {
-  evt.preventDefault();
-  renderLoading(
-    true,
-    popupAddForm.querySelector(".popup__submit-button"),
-    "Создать"
-  );
-  const newCardInfo = {
-    link: inputImageLink.value,
-    caption: inputPlace.value,
-  };
-  addCard(newCardInfo)
-    .then((res) => {
-      renderCard(res.link, res.name, res);
-      closeModalWindow(popupAddForm);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => {
-      renderLoading(
-        false,
-        popupAddForm.querySelector(".popup__submit-button"),
-        "Создать"
-      );
-    });
-}

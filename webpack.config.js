@@ -53,9 +53,6 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html", // путь к файлу index.html
-    }),
-    new HtmlWebpackPlugin({
       template: "./src/index.html",
     }),
     new CleanWebpackPlugin(),
